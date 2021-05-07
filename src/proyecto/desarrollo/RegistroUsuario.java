@@ -42,8 +42,8 @@ public class RegistroUsuario extends javax.swing.JFrame {
     
     
     //Se obitnenen los datos de la BD y estan contenidos en un arreglo
-    private ArrayList<String> obtenerSedes() {
-        ArrayList<String> listaTipos;
+    private ArrayList<Integer> obtenerSedes() {
+        ArrayList<Integer> listaTipos;
         listaTipos = new ArrayList<>();
         
         try {
@@ -51,7 +51,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
             ResultSet resultado = leer.executeQuery("SELECT id_sede FROM sede");
            
             while(resultado.next()){
-                listaTipos.add(new String(resultado.getString(1)));
+                listaTipos.add(resultado.getInt(1));
             }
             
         } catch (SQLException ex) {
@@ -64,9 +64,10 @@ public class RegistroUsuario extends javax.swing.JFrame {
     //Se agregan los valores de la BD de sede dentro del Item
     private void mostrarSedes(){
         for(int i=0;i<obtenerSedes().size();i++){
-            comboboxSede.addItem(obtenerSedes().get(i));
+            comboboxSede.addItem(Integer.toString(obtenerSedes().get(i)));
         }
     }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -301,7 +302,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(fieldPass.getText().equals(fieldPass2.getText())){
             try{
-                PreparedStatement guardar = conect.prepareStatement("INSERT INTO empleado(usuario_emp, contrasenia_emp, nombre_emp, telefono_emp, direccion_emp, ciudad_emp, cargo_emp, id_sede) VALUES(?,?,?,?,?,?,?)");
+                PreparedStatement guardar = conect.prepareStatement("INSERT INTO empleado(usuario_emp, contrasenia_emp, nombre_emp, telefono_emp, direccion_emp, ciudad_emp, cargo_emp, id_sede) VALUES(?,?,?,?,?,?,?,?)");
                 guardar.setString(1, fieldUser.getText());
                 guardar.setString(2, fieldPass.getText());
                 guardar.setString(3, fieldNombre.getText());
@@ -309,11 +310,11 @@ public class RegistroUsuario extends javax.swing.JFrame {
                 guardar.setString(5, fieldDireccion.getText());
                 guardar.setString(6, fieldCiudad.getText());
                 guardar.setString(7, (String) comboboxCargo.getSelectedItem());
-                guardar.setString(8, (String) comboboxSede.getSelectedItem());
+                guardar.setInt(8, (int) Integer.parseInt((String)comboboxSede.getSelectedItem()));
                 guardar.executeUpdate();
                 enlace.cerrar();
                 JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente");
-            }catch(Exception e){
+            }catch(SQLException e){
                 JOptionPane.showMessageDialog(null, "No se completo el registro "+ e);
             }
         }else {

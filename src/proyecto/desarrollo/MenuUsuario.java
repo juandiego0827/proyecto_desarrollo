@@ -5,7 +5,6 @@
  */
 package proyecto.desarrollo;
 
-import static java.lang.System.exit;
 import java.sql.Connection;
 import java.sql.*;
 import java.sql.Statement;
@@ -31,6 +30,9 @@ public class MenuUsuario extends javax.swing.JFrame {
         mostrarDatosEmpleados();  
     }
 
+    /**
+     *
+     */
     public void mostrarDatosEmpleados(){
         DefaultTableModel tEmpleados = new DefaultTableModel();
         tEmpleados.addColumn("Usuario");
@@ -39,9 +41,10 @@ public class MenuUsuario extends javax.swing.JFrame {
         tEmpleados.addColumn("Direccion");
         tEmpleados.addColumn("Ciudad");
         tEmpleados.addColumn("Cargo");
+        tEmpleados.addColumn("ID sede");
         jTable1.setModel(tEmpleados);
         
-        String []datos = new String[6];
+        String []datos = new String[7];
         
         try{
             Statement leer = conect.createStatement();
@@ -54,19 +57,17 @@ public class MenuUsuario extends javax.swing.JFrame {
                 datos[3]=resultado.getString(4);
                 datos[4]=resultado.getString(5);
                 datos[5]=resultado.getString(6);
-                datos[6]=resultado.getString(7);
+                datos[6]=Integer.toString(resultado.getInt(7));
                 tEmpleados.addRow(datos);
             }
             jTable1.setModel(tEmpleados);
             enlace.cerrar();
-        }catch(Exception e){
+        }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error en la consulta " + e);
         }
     }
     
-    public void mostrarDatosSedes(){
-        
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -163,7 +164,7 @@ public class MenuUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(153, 153, 153)
                         .addComponent(labelEmpleados)
