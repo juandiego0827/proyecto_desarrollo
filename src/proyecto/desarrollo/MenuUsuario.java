@@ -33,7 +33,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     /**
      *
      */
-    public void mostrarDatosEmpleados(){
+    private void mostrarDatosEmpleados(){
         DefaultTableModel tEmpleados = new DefaultTableModel();
         tEmpleados.addColumn("Usuario");
         tEmpleados.addColumn("Nombre");
@@ -220,7 +220,7 @@ public class MenuUsuario extends javax.swing.JFrame {
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         // TODO add your handling code here:
-        ModificarUsuario modificar=new ModificarUsuario();
+        ModificarDatosUsuario modificar=new ModificarDatosUsuario();
         modificar.setVisible(true);
         this.setVisible(false);
         try {
