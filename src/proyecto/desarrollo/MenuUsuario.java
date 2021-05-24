@@ -37,6 +37,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         DefaultTableModel tEmpleados = new DefaultTableModel();
         tEmpleados.addColumn("Usuario");
         tEmpleados.addColumn("Nombre");
+        tEmpleados.addColumn("Cédula");
         tEmpleados.addColumn("Telefono");
         tEmpleados.addColumn("Direccion");
         tEmpleados.addColumn("Ciudad");
@@ -44,11 +45,11 @@ public class MenuUsuario extends javax.swing.JFrame {
         tEmpleados.addColumn("ID sede");
         jTable1.setModel(tEmpleados);
         
-        String []datos = new String[7];
+        String []datos = new String[8];
         
         try{
             Statement leer = conect.createStatement();
-            ResultSet resultado = leer.executeQuery("SELECT usuario_emp, nombre_emp, telefono_emp, direccion_emp, ciudad_emp, cargo_emp, id_sede FROM empleado");
+            ResultSet resultado = leer.executeQuery("SELECT usuario_emp, nombre_emp, cedula_emp, telefono_emp, direccion_emp, ciudad_emp, cargo_emp, id_sede FROM empleado");
             
             while(resultado.next()){
                 datos[0]=resultado.getString(1);
@@ -57,7 +58,8 @@ public class MenuUsuario extends javax.swing.JFrame {
                 datos[3]=resultado.getString(4);
                 datos[4]=resultado.getString(5);
                 datos[5]=resultado.getString(6);
-                datos[6]=Integer.toString(resultado.getInt(7));
+                datos[6]=resultado.getString(7);
+                datos[7]=Integer.toString(resultado.getInt(8));
                 tEmpleados.addRow(datos);
             }
             jTable1.setModel(tEmpleados);

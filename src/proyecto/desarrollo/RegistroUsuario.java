@@ -82,7 +82,6 @@ public class RegistroUsuario extends javax.swing.JFrame {
         labelPass = new javax.swing.JLabel();
         labelPass2 = new javax.swing.JLabel();
         fieldUser = new javax.swing.JTextField();
-        fieldNombre = new javax.swing.JTextField();
         fieldTelefono = new javax.swing.JTextField();
         fieldDireccion = new javax.swing.JTextField();
         comboboxCargo = new javax.swing.JComboBox<>();
@@ -94,6 +93,9 @@ public class RegistroUsuario extends javax.swing.JFrame {
         comboboxSede = new javax.swing.JComboBox<>();
         fieldPass = new javax.swing.JPasswordField();
         fieldPass2 = new javax.swing.JPasswordField();
+        labelCedula = new javax.swing.JLabel();
+        fieldCedula = new javax.swing.JTextField();
+        fieldNombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,12 +126,6 @@ public class RegistroUsuario extends javax.swing.JFrame {
         fieldUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldUserActionPerformed(evt);
-            }
-        });
-
-        fieldNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldNombreActionPerformed(evt);
             }
         });
 
@@ -190,46 +186,66 @@ public class RegistroUsuario extends javax.swing.JFrame {
             }
         });
 
+        labelCedula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelCedula.setText("Cédula");
+
+        fieldCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldCedulaActionPerformed(evt);
+            }
+        });
+
+        fieldNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldNombreActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(116, 116, 116)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(botonRegresar))
+                        .addGap(25, 25, 25)
+                        .addComponent(titulo))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelPass2)
+                            .addComponent(labelUser)
+                            .addComponent(labelPass)
+                            .addComponent(labelNombre))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(fieldUser, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                            .addComponent(fieldPass)
+                            .addComponent(fieldPass2)
+                            .addComponent(fieldNombre, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelSede)
+                            .addComponent(labelTelefono)
+                            .addComponent(labelDireccion)
+                            .addComponent(labelCargo)
+                            .addComponent(labelCiudad)
+                            .addComponent(labelCedula))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonRegresar)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(titulo))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(botonRegistrar)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(labelPass2)
-                                        .addComponent(labelUser)
-                                        .addComponent(labelPass)
-                                        .addComponent(labelNombre)
-                                        .addComponent(labelTelefono)
-                                        .addComponent(labelDireccion)
-                                        .addComponent(labelCargo)
-                                        .addComponent(labelCiudad)
-                                        .addComponent(labelSede))
-                                    .addGap(18, 18, 18)
+                                .addGap(82, 82, 82)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(botonRegistrar)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(comboboxCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(fieldNombre)
-                                        .addComponent(fieldUser)
                                         .addComponent(fieldTelefono)
                                         .addComponent(fieldDireccion)
-                                        .addComponent(fieldCiudad)
-                                        .addComponent(fieldPass)
-                                        .addComponent(fieldPass2)
-                                        .addComponent(comboboxSede, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
-                .addContainerGap(128, Short.MAX_VALUE))
+                                        .addComponent(fieldCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(comboboxSede, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(fieldCedula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,46 +253,52 @@ public class RegistroUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelUser)
-                    .addComponent(fieldUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelPass)
-                    .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelPass2)
-                    .addComponent(fieldPass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(fieldUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldPass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelUser)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelPass)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelPass2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelNombre)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelNombre)
-                    .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelCedula)
+                    .addComponent(fieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelTelefono))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelTelefono)
-                    .addComponent(fieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelDireccion)
-                    .addComponent(fieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelDireccion))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelCiudad))
-                .addGap(6, 6, 6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboboxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelCargo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelSede)
-                    .addComponent(comboboxSede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboboxSede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelSede))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonRegistrar)
                     .addComponent(botonRegresar))
-                .addContainerGap())
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -285,10 +307,6 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private void fieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldUserActionPerformed
-
-    private void fieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fieldNombreActionPerformed
 
     private void fieldTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldTelefonoActionPerformed
         // TODO add your handling code here:
@@ -302,15 +320,16 @@ public class RegistroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(fieldPass.getText().equals(fieldPass2.getText())){
             try{
-                PreparedStatement guardar = conect.prepareStatement("INSERT INTO empleado(usuario_emp, contrasenia_emp, nombre_emp, telefono_emp, direccion_emp, ciudad_emp, cargo_emp, id_sede) VALUES(?,?,?,?,?,?,?,?)");
+                PreparedStatement guardar = conect.prepareStatement("INSERT INTO empleado(usuario_emp, contrasenia_emp, nombre_emp, cedula_emp, telefono_emp, direccion_emp, ciudad_emp, cargo_emp, id_sede) VALUES(?,?,?,?,?,?,?,?,?)");
                 guardar.setString(1, fieldUser.getText());
                 guardar.setString(2, fieldPass.getText());
                 guardar.setString(3, fieldNombre.getText());
-                guardar.setString(4, fieldTelefono.getText());
-                guardar.setString(5, fieldDireccion.getText());
-                guardar.setString(6, fieldCiudad.getText());
-                guardar.setString(7, (String) comboboxCargo.getSelectedItem());
-                guardar.setInt(8, (int) Integer.parseInt((String)comboboxSede.getSelectedItem()));
+                guardar.setString(4, fieldCedula.getText());
+                guardar.setString(5, fieldTelefono.getText());
+                guardar.setString(6, fieldDireccion.getText());
+                guardar.setString(7, fieldCiudad.getText());
+                guardar.setString(8, (String) comboboxCargo.getSelectedItem());
+                guardar.setInt(9, (int) Integer.parseInt((String)comboboxSede.getSelectedItem()));
                 guardar.executeUpdate();
                 enlace.cerrar();
                 JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente");
@@ -350,6 +369,14 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private void fieldPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldPassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldPassActionPerformed
+
+    private void fieldCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldCedulaActionPerformed
+
+    private void fieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -393,6 +420,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private javax.swing.JButton botonRegresar;
     private javax.swing.JComboBox<String> comboboxCargo;
     private javax.swing.JComboBox<String> comboboxSede;
+    private javax.swing.JTextField fieldCedula;
     private javax.swing.JTextField fieldCiudad;
     private javax.swing.JTextField fieldDireccion;
     private javax.swing.JTextField fieldNombre;
@@ -401,6 +429,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField fieldTelefono;
     private javax.swing.JTextField fieldUser;
     private javax.swing.JLabel labelCargo;
+    private javax.swing.JLabel labelCedula;
     private javax.swing.JLabel labelCiudad;
     private javax.swing.JLabel labelDireccion;
     private javax.swing.JLabel labelNombre;
