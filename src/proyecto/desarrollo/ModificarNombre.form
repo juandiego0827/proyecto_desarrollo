@@ -28,18 +28,18 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="labelUsuarioAnterior" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelUsuario" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                               <Component id="botonRegresar" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelUsuarioNuevo" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelNombreNuevo" min="-2" max="-2" attributes="0"/>
                               <Component id="labelContrasenia" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="fieldUsuarioAnterior" alignment="1" max="32767" attributes="0"/>
+                          <Component id="fieldUsuario" alignment="1" max="32767" attributes="0"/>
                           <Component id="botonGuardar" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="fieldUsuarioNuevo" alignment="1" max="32767" attributes="0"/>
+                          <Component id="fieldNombreNuevo" alignment="1" max="32767" attributes="0"/>
                           <Component id="fieldContrasenia" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -48,7 +48,7 @@
                       <Component id="titulo" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="100" max="32767" attributes="0"/>
+              <EmptySpace pref="104" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,13 +59,13 @@
               <Component id="titulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelUsuarioAnterior" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="fieldUsuarioAnterior" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fieldUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="labelUsuarioNuevo" min="-2" max="-2" attributes="0"/>
-                  <Component id="fieldUsuarioNuevo" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelNombreNuevo" min="-2" max="-2" attributes="0"/>
+                  <Component id="fieldNombreNuevo" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -88,33 +88,33 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="28" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="ACTUALIZAR USUARIO"/>
+        <Property name="text" type="java.lang.String" value="ACTUALIZAR NOMBRE"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelUsuarioAnterior">
+    <Component class="javax.swing.JLabel" name="labelUsuario">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Escriba el usuario anterior"/>
+        <Property name="text" type="java.lang.String" value="Escriba el usuario"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="fieldUsuarioAnterior">
+    <Component class="javax.swing.JTextField" name="fieldUsuario">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldUsuarioAnteriorActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldUsuarioActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelUsuarioNuevo">
+    <Component class="javax.swing.JLabel" name="labelNombreNuevo">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Escriba el nuevo usuario"/>
+        <Property name="text" type="java.lang.String" value="Escriba el nuevo nombre"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="fieldUsuarioNuevo">
+    <Component class="javax.swing.JTextField" name="fieldNombreNuevo">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldUsuarioNuevoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldNombreNuevoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonGuardar">

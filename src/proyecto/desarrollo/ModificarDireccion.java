@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author usuario
  */
-public class ModificarUsuario extends javax.swing.JFrame {
+public class ModificarDireccion extends javax.swing.JFrame {
 
     /**
      * Creates new form ModificarUser
@@ -26,41 +26,38 @@ public class ModificarUsuario extends javax.swing.JFrame {
     
     ConexionBD enlace = new ConexionBD();
     Connection conect = enlace.conectar();
-    public ModificarUsuario() {
+    public ModificarDireccion() {
         initComponents();
     }
     
     
-    private void modificarUsuario(){
-        String []datos = new String[2];
-        if(!fieldUsuarioAnterior.getText().equals(fieldUsuarioNuevo.getText())){
-            try{
-                Statement leer = conect.createStatement();
-                ResultSet resultado = leer.executeQuery("SELECT usuario_emp,contrasenia_emp FROM empleado");
+    private void modificarDireccion(){
+        String []datos = new String[3];
+        try{
+            Statement leer = conect.createStatement();
+            ResultSet resultado = leer.executeQuery("SELECT usuario_emp,contrasenia_emp, ciudad_emp FROM empleado");
                 
-                while(resultado.next()){
-                    datos[0]=resultado.getString(1);
-                    datos[1]=resultado.getString(2);
-                }
-                
-                if(datos[0].equals(fieldUsuarioAnterior.getText()) && datos[1].equals(fieldContrasenia.getText())){
-                    PreparedStatement actualizar = conect.prepareStatement("UPDATE empleado SET usuario_emp=? WHERE usuario_emp=? AND contrasenia_emp=?");
-                    actualizar.setString(1, fieldUsuarioNuevo.getText());
-                    actualizar.setString(2, fieldUsuarioAnterior.getText());
-                    actualizar.setString(3, fieldContrasenia.getText());
-                    actualizar.executeUpdate();
-                    enlace.cerrar();
-                    JOptionPane.showMessageDialog(null, "Los datos se actualizaron correctamente");
-                    regresarMenu();
-                }else{
-                    JOptionPane.showMessageDialog(null, "El usuario anterior o la contraseña no son correctos");
-                }
-                
-            }catch(SQLException e){
-                JOptionPane.showMessageDialog(null, "No se completo el registro "+ e);
+            while(resultado.next()){
+                datos[0]=resultado.getString(1);
+                datos[1]=resultado.getString(2);
+                datos[2]=resultado.getString(3);
             }
-        }else{
-            JOptionPane.showMessageDialog(null, "Los datos son iguales, por favor, corrígelos");
+            
+            if(datos[0].equals(fieldUsuario.getText()) && datos[1].equals(fieldContrasenia.getText())){
+                PreparedStatement actualizar = conect.prepareStatement("UPDATE empleado SET direccion_emp=?, ciudad_emp=? WHERE usuario_emp=? AND contrasenia_emp=?");
+                actualizar.setString(1, fieldDireccionNueva.getText());
+                actualizar.setString(2, fieldCiudadNueva.getText());
+                actualizar.setString(3, fieldUsuario.getText());
+                actualizar.setString(4, fieldContrasenia.getText());
+                actualizar.executeUpdate();
+                enlace.cerrar();
+                JOptionPane.showMessageDialog(null, "Los datos se actualizaron correctamente");
+                regresarMenu();
+            }else{
+                JOptionPane.showMessageDialog(null, "El usuario o contraseña no son correctos");
+            }    
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "No se completo el registro "+ e);
         }
     }
     
@@ -85,35 +82,37 @@ public class ModificarUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         titulo = new javax.swing.JLabel();
-        labelUsuarioAnterior = new javax.swing.JLabel();
-        fieldUsuarioAnterior = new javax.swing.JTextField();
-        labelUsuarioNuevo = new javax.swing.JLabel();
-        fieldUsuarioNuevo = new javax.swing.JTextField();
+        labelUsuario = new javax.swing.JLabel();
+        fieldUsuario = new javax.swing.JTextField();
+        labelDireccionNueva = new javax.swing.JLabel();
+        fieldDireccionNueva = new javax.swing.JTextField();
         botonGuardar = new javax.swing.JButton();
         botonRegresar = new javax.swing.JButton();
         labelContrasenia = new javax.swing.JLabel();
         fieldContrasenia = new javax.swing.JPasswordField();
+        labelCiudadNueva = new javax.swing.JLabel();
+        fieldCiudadNueva = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         titulo.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
-        titulo.setText("ACTUALIZAR USUARIO");
+        titulo.setText("ACTUALIZAR DIRECCION Y CIUDAD");
 
-        labelUsuarioAnterior.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labelUsuarioAnterior.setText("Escriba el usuario anterior");
+        labelUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelUsuario.setText("Escriba el usuario");
 
-        fieldUsuarioAnterior.addActionListener(new java.awt.event.ActionListener() {
+        fieldUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldUsuarioAnteriorActionPerformed(evt);
+                fieldUsuarioActionPerformed(evt);
             }
         });
 
-        labelUsuarioNuevo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labelUsuarioNuevo.setText("Escriba el nuevo usuario");
+        labelDireccionNueva.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelDireccionNueva.setText("Escriba la nueva dirección");
 
-        fieldUsuarioNuevo.addActionListener(new java.awt.event.ActionListener() {
+        fieldDireccionNueva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldUsuarioNuevoActionPerformed(evt);
+                fieldDireccionNuevaActionPerformed(evt);
             }
         });
 
@@ -140,6 +139,15 @@ public class ModificarUsuario extends javax.swing.JFrame {
             }
         });
 
+        labelCiudadNueva.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelCiudadNueva.setText("Escriba la ciudad");
+
+        fieldCiudadNueva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldCiudadNuevaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,21 +157,23 @@ public class ModificarUsuario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelUsuarioAnterior)
+                            .addComponent(labelUsuario)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(botonRegresar)
-                                .addComponent(labelUsuarioNuevo)
-                                .addComponent(labelContrasenia, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addComponent(labelDireccionNueva, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(labelContrasenia, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(labelCiudadNueva, javax.swing.GroupLayout.Alignment.TRAILING)))
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(fieldUsuarioAnterior, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fieldUsuario, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(botonGuardar)
-                            .addComponent(fieldUsuarioNuevo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(fieldContrasenia, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(fieldDireccionNueva, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fieldContrasenia, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fieldCiudadNueva)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
+                        .addGap(30, 30, 30)
                         .addComponent(titulo)))
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,17 +182,21 @@ public class ModificarUsuario extends javax.swing.JFrame {
                 .addComponent(titulo)
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelUsuarioAnterior)
-                    .addComponent(fieldUsuarioAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelUsuario)
+                    .addComponent(fieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelUsuarioNuevo)
-                    .addComponent(fieldUsuarioNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelContrasenia)
-                    .addComponent(fieldContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                    .addComponent(fieldDireccionNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelDireccionNueva))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldCiudadNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelCiudadNueva))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelContrasenia))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonGuardar)
                     .addComponent(botonRegresar))
@@ -192,17 +206,17 @@ public class ModificarUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fieldUsuarioAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldUsuarioAnteriorActionPerformed
+    private void fieldUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldUsuarioAnteriorActionPerformed
+    }//GEN-LAST:event_fieldUsuarioActionPerformed
 
-    private void fieldUsuarioNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldUsuarioNuevoActionPerformed
+    private void fieldDireccionNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldDireccionNuevaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldUsuarioNuevoActionPerformed
+    }//GEN-LAST:event_fieldDireccionNuevaActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
         // TODO add your handling code here:
-        modificarUsuario();
+        modificarDireccion();
         
     }//GEN-LAST:event_botonGuardarActionPerformed
 
@@ -214,6 +228,10 @@ public class ModificarUsuario extends javax.swing.JFrame {
     private void fieldContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldContraseniaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldContraseniaActionPerformed
+
+    private void fieldCiudadNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCiudadNuevaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldCiudadNuevaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,21 +250,35 @@ public class ModificarUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarDireccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarDireccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarDireccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarDireccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarUsuario().setVisible(true);
+                new ModificarDireccion().setVisible(true);
             }
         });
     }
@@ -254,12 +286,14 @@ public class ModificarUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonRegresar;
+    private javax.swing.JTextField fieldCiudadNueva;
     private javax.swing.JPasswordField fieldContrasenia;
-    private javax.swing.JTextField fieldUsuarioAnterior;
-    private javax.swing.JTextField fieldUsuarioNuevo;
+    private javax.swing.JTextField fieldDireccionNueva;
+    private javax.swing.JTextField fieldUsuario;
+    private javax.swing.JLabel labelCiudadNueva;
     private javax.swing.JLabel labelContrasenia;
-    private javax.swing.JLabel labelUsuarioAnterior;
-    private javax.swing.JLabel labelUsuarioNuevo;
+    private javax.swing.JLabel labelDireccionNueva;
+    private javax.swing.JLabel labelUsuario;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

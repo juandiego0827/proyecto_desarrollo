@@ -30,11 +30,10 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     private void grupoBotones(){
         ButtonGroup grupo = new ButtonGroup();
         grupo.add(radiobuttonUsuario);
-        grupo.add(radiobuttonPass);
+        grupo.add(radiobuttonContrasenia);
         grupo.add(radiobuttonNombre);
         grupo.add(radiobuttonTelefono);
         grupo.add(radiobuttonDireccion);
-        grupo.add(radiobuttonCiudad);
         grupo.add(radiobuttonCargo);
         grupo.add(radiobuttonSede);
     }
@@ -58,24 +57,22 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         labelDireccion = new javax.swing.JLabel();
         labelTelefono = new javax.swing.JLabel();
         labelPass = new javax.swing.JLabel();
-        botonRegistrar = new javax.swing.JButton();
+        botonSeleccionar = new javax.swing.JButton();
         botonRegresar = new javax.swing.JButton();
-        labelCiudad = new javax.swing.JLabel();
         labelSede = new javax.swing.JLabel();
         labelSeleccion = new javax.swing.JLabel();
         radiobuttonUsuario = new javax.swing.JRadioButton();
-        radiobuttonPass = new javax.swing.JRadioButton();
+        radiobuttonContrasenia = new javax.swing.JRadioButton();
         radiobuttonNombre = new javax.swing.JRadioButton();
         radiobuttonTelefono = new javax.swing.JRadioButton();
         radiobuttonDireccion = new javax.swing.JRadioButton();
-        radiobuttonCiudad = new javax.swing.JRadioButton();
         radiobuttonCargo = new javax.swing.JRadioButton();
         radiobuttonSede = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         titulo.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
-        titulo.setText("MODIFICAR DATOS DE USUARIO");
+        titulo.setText("ACTUALIZAR DATOS DE USUARIO");
 
         labelUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelUser.setText("Usuario");
@@ -95,10 +92,10 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
         labelPass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelPass.setText("Contraseña");
 
-        botonRegistrar.setText("Seleccionar");
-        botonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        botonSeleccionar.setText("Seleccionar");
+        botonSeleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonRegistrarActionPerformed(evt);
+                botonSeleccionarActionPerformed(evt);
             }
         });
 
@@ -108,9 +105,6 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                 botonRegresarActionPerformed(evt);
             }
         });
-
-        labelCiudad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labelCiudad.setText("Ciudad");
 
         labelSede.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelSede.setText("Sede");
@@ -135,32 +129,31 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                                 .addGap(15, 15, 15)
                                 .addComponent(botonRegresar)
                                 .addGap(52, 52, 52)
-                                .addComponent(botonRegistrar))))
+                                .addComponent(botonSeleccionar))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(179, 179, 179)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(radiobuttonUsuario)
-                            .addComponent(radiobuttonPass)
+                            .addComponent(radiobuttonContrasenia)
                             .addComponent(radiobuttonNombre)
                             .addComponent(radiobuttonTelefono)
                             .addComponent(radiobuttonDireccion)
-                            .addComponent(radiobuttonCiudad)
                             .addComponent(radiobuttonCargo)
                             .addComponent(radiobuttonSede))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labelUser)
-                                .addComponent(labelPass)
-                                .addComponent(labelNombre)
-                                .addComponent(labelTelefono)
-                                .addComponent(labelCargo)
-                                .addComponent(labelCiudad)
-                                .addComponent(labelSede))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelDireccion)
-                                .addGap(18, 18, 18)))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelUser)
+                                    .addComponent(labelPass)
+                                    .addComponent(labelNombre)
+                                    .addComponent(labelTelefono)
+                                    .addComponent(labelCargo))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(labelDireccion)
+                                    .addGap(18, 18, 18)))
+                            .addComponent(labelSede))))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,44 +174,38 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                            .addGroup(layout.createSequentialGroup()
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                    .addGroup(layout.createSequentialGroup()
-                                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                            .addComponent(labelUser)
-                                                                            .addComponent(radiobuttonUsuario))
-                                                                        .addGap(6, 6, 6)
-                                                                        .addComponent(labelPass))
-                                                                    .addComponent(radiobuttonPass))
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(labelNombre))
-                                                            .addComponent(radiobuttonNombre))
+                                                            .addComponent(labelUser)
+                                                            .addComponent(radiobuttonUsuario))
                                                         .addGap(6, 6, 6)
-                                                        .addComponent(labelTelefono))
-                                                    .addComponent(radiobuttonTelefono))
+                                                        .addComponent(labelPass))
+                                                    .addComponent(radiobuttonContrasenia))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(labelDireccion))
-                                            .addComponent(radiobuttonDireccion))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(labelCiudad))
-                                    .addComponent(radiobuttonCiudad))
+                                                .addComponent(labelNombre))
+                                            .addComponent(radiobuttonNombre))
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelTelefono))
+                                    .addComponent(radiobuttonTelefono))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelCargo))
-                            .addComponent(radiobuttonCargo))
+                                .addComponent(labelDireccion))
+                            .addComponent(radiobuttonDireccion))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelSede))
+                        .addComponent(labelCargo))
+                    .addComponent(radiobuttonCargo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelSede)
                     .addComponent(radiobuttonSede))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonRegistrar)
+                    .addComponent(botonSeleccionar)
                     .addComponent(botonRegresar))
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
+    private void botonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeleccionarActionPerformed
         // TODO add your handling code here:            
         if(radiobuttonUsuario.isSelected()){
             ModificarUsuario regresar=new ModificarUsuario();
@@ -229,8 +216,62 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(ModificarDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }else if(radiobuttonContrasenia.isSelected()){
+            ModificarContrasenia regresar=new ModificarContrasenia();
+            regresar.setVisible(true);
+            this.setVisible(false);
+            try {
+                enlace.cerrar();
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else if(radiobuttonNombre.isSelected()){
+            ModificarNombre regresar=new ModificarNombre();
+            regresar.setVisible(true);
+            this.setVisible(false);
+            try {
+                enlace.cerrar();
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else if(radiobuttonTelefono.isSelected()){
+            ModificarTelefono regresar=new ModificarTelefono();
+            regresar.setVisible(true);
+            this.setVisible(false);
+            try {
+                enlace.cerrar();
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else if(radiobuttonDireccion.isSelected()){
+            ModificarDireccion regresar=new ModificarDireccion();
+            regresar.setVisible(true);
+            this.setVisible(false);
+            try {
+                enlace.cerrar();
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else if(radiobuttonCargo.isSelected()){
+            ModificarCargo regresar=new ModificarCargo();
+            regresar.setVisible(true);
+            this.setVisible(false);
+            try {
+                enlace.cerrar();
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else if(radiobuttonSede.isSelected()){
+            ModificarSede regresar=new ModificarSede();
+            regresar.setVisible(true);
+            this.setVisible(false);
+            try {
+                enlace.cerrar();
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-    }//GEN-LAST:event_botonRegistrarActionPerformed
+    }//GEN-LAST:event_botonSeleccionarActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
         // TODO add your handling code here:
@@ -288,10 +329,9 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonRegistrar;
     private javax.swing.JButton botonRegresar;
+    private javax.swing.JButton botonSeleccionar;
     private javax.swing.JLabel labelCargo;
-    private javax.swing.JLabel labelCiudad;
     private javax.swing.JLabel labelDireccion;
     private javax.swing.JLabel labelNombre;
     private javax.swing.JLabel labelPass;
@@ -300,10 +340,9 @@ public class ModificarDatosUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel labelTelefono;
     private javax.swing.JLabel labelUser;
     private javax.swing.JRadioButton radiobuttonCargo;
-    private javax.swing.JRadioButton radiobuttonCiudad;
+    private javax.swing.JRadioButton radiobuttonContrasenia;
     private javax.swing.JRadioButton radiobuttonDireccion;
     private javax.swing.JRadioButton radiobuttonNombre;
-    private javax.swing.JRadioButton radiobuttonPass;
     private javax.swing.JRadioButton radiobuttonSede;
     private javax.swing.JRadioButton radiobuttonTelefono;
     private javax.swing.JRadioButton radiobuttonUsuario;

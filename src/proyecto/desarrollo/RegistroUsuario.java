@@ -23,13 +23,14 @@ public class RegistroUsuario extends javax.swing.JFrame {
 
     ConexionBD enlace = new ConexionBD();
     Connection conect = enlace.conectar();
+    ArrayList<Integer> listaSedes = new ArrayList<>();
+    
     /**
      * Creates new form registroUsuario
      */
     public RegistroUsuario() {
         initComponents();
         obtenerSedes();
-        mostrarSedes();
     }
 
     
@@ -42,31 +43,22 @@ public class RegistroUsuario extends javax.swing.JFrame {
     
     
     //Se obitnenen los datos de la BD y estan contenidos en un arreglo
-    private ArrayList<Integer> obtenerSedes() {
-        ArrayList<Integer> listaTipos;
-        listaTipos = new ArrayList<>();
-        
+    private void obtenerSedes() { 
         try {
             Statement leer = conect.createStatement();
             ResultSet resultado = leer.executeQuery("SELECT id_sede FROM sede");
-           
             while(resultado.next()){
-                listaTipos.add(resultado.getInt(1));
+                listaSedes.add(resultado.getInt(1));
             }
-            
+            for(int i=0;i<listaSedes.size();i++){
+                comboboxSede.addItem(Integer.toString(listaSedes.get(i)));
+            }
         } catch (SQLException ex) {
             Logger.getLogger(RegistroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return listaTipos;
+        }        
     }
     
     //Se agregan los valores de la BD de sede dentro del Item
-    private void mostrarSedes(){
-        for(int i=0;i<obtenerSedes().size();i++){
-            comboboxSede.addItem(Integer.toString(obtenerSedes().get(i)));
-        }
-    }
     
     
     @SuppressWarnings("unchecked")
