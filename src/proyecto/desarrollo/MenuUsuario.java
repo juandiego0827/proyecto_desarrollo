@@ -27,7 +27,8 @@ public class MenuUsuario extends javax.swing.JFrame {
      */
     public MenuUsuario() {
         initComponents();
-        mostrarDatosEmpleados();  
+        mostrarDatosEmpleados();
+        mostrarDatosSedes();
     }
 
     /**
@@ -43,7 +44,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         tEmpleados.addColumn("Ciudad");
         tEmpleados.addColumn("Cargo");
         tEmpleados.addColumn("ID sede");
-        jTable1.setModel(tEmpleados);
+        tableUsuarios.setModel(tEmpleados);
         
         String []datos = new String[8];
         
@@ -62,13 +63,41 @@ public class MenuUsuario extends javax.swing.JFrame {
                 datos[7]=Integer.toString(resultado.getInt(8));
                 tEmpleados.addRow(datos);
             }
-            jTable1.setModel(tEmpleados);
-            enlace.cerrar();
+            tableUsuarios.setModel(tEmpleados);
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error en la consulta " + e);
         }
     }
     
+    private void mostrarDatosSedes(){
+        DefaultTableModel tSedes = new DefaultTableModel();
+        tSedes.addColumn("Direccion");
+        tSedes.addColumn("Barrio");
+        tSedes.addColumn("Ciudad");
+        tSedes.addColumn("Telefono");
+        
+        tableSedes.setModel(tSedes);
+        
+        String []datos = new String[5];
+        
+        try{
+            Statement leer = conect.createStatement();
+            ResultSet resultado = leer.executeQuery("SELECT id_sede, direccion_sede, barrio_sede, ciudad_sede, telefono_sede FROM sede");
+            
+            while(resultado.next()){
+                datos[0]=resultado.getString(1);
+                datos[1]=resultado.getString(2);
+                datos[2]=resultado.getString(3);
+                datos[3]=resultado.getString(4);
+                datos[4]=resultado.getString(5);
+                tSedes.addRow(datos);
+            }
+            tableSedes.setModel(tSedes);
+            enlace.cerrar();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error en la consulta " + e);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,22 +110,25 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         titulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableUsuarios = new javax.swing.JTable();
         labelEmpleados = new javax.swing.JLabel();
         botonModificar = new javax.swing.JButton();
         botonEliminar = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
         botonRegistrar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tableSedes = new javax.swing.JTable();
         labelSedes = new javax.swing.JLabel();
+        botonModificar2 = new javax.swing.JButton();
+        botonRegistrar2 = new javax.swing.JButton();
+        botonEliminar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         titulo.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         titulo.setText("MENU DE INICIO");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -108,9 +140,9 @@ public class MenuUsuario extends javax.swing.JFrame {
                 "Usuario", "Nombre", "Teléfono", "Dirección", "Ciudad", "Cargo", "ID Sede"
             }
         ));
-        jTable1.setCellSelectionEnabled(true);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tableUsuarios.setCellSelectionEnabled(true);
+        jScrollPane1.setViewportView(tableUsuarios);
+        tableUsuarios.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         labelEmpleados.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelEmpleados.setText("Empleados de la empresa");
@@ -143,21 +175,37 @@ public class MenuUsuario extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tableSedes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID Sede", "Dirección", "Barrio", "Ciudad", "Teléfono"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tableSedes);
 
         labelSedes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelSedes.setText("Sedes de la Empresa");
+
+        botonModificar2.setText("Modificar datos");
+        botonModificar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificar2ActionPerformed(evt);
+            }
+        });
+
+        botonRegistrar2.setText("Registrar sede");
+        botonRegistrar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrar2ActionPerformed(evt);
+            }
+        });
+
+        botonEliminar2.setText("Eliminar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -192,6 +240,14 @@ public class MenuUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonEliminar)
                 .addGap(61, 61, 61))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(botonModificar2)
+                .addGap(81, 81, 81)
+                .addComponent(botonRegistrar2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonEliminar2)
+                .addGap(53, 53, 53))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,7 +270,12 @@ public class MenuUsuario extends javax.swing.JFrame {
                 .addComponent(labelSedes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonModificar2)
+                    .addComponent(botonRegistrar2)
+                    .addComponent(botonEliminar2))
+                .addContainerGap(257, Short.MAX_VALUE))
         );
 
         pack();
@@ -247,6 +308,17 @@ public class MenuUsuario extends javax.swing.JFrame {
         registrar.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_botonRegistrarActionPerformed
+
+    private void botonModificar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonModificar2ActionPerformed
+
+    private void botonRegistrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrar2ActionPerformed
+        // TODO add your handling code here:
+        RegistroSede registrar=new RegistroSede();
+        registrar.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_botonRegistrar2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,15 +356,18 @@ public class MenuUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonEliminar;
+    private javax.swing.JButton botonEliminar2;
     private javax.swing.JButton botonModificar;
+    private javax.swing.JButton botonModificar2;
     private javax.swing.JButton botonRegistrar;
+    private javax.swing.JButton botonRegistrar2;
     private javax.swing.JButton botonSalir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel labelEmpleados;
     private javax.swing.JLabel labelSedes;
+    private javax.swing.JTable tableSedes;
+    private javax.swing.JTable tableUsuarios;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

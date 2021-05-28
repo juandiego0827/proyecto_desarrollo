@@ -25,56 +25,59 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="titulo" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labelPass2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelUser" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelPass" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelNombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="fieldUser" pref="127" max="32767" attributes="0"/>
-                          <Component id="fieldPass" alignment="0" max="32767" attributes="0"/>
-                          <Component id="fieldPass2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="fieldNombre" alignment="1" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                      <Component id="botonRegresar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="botonRegistrar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labelSede" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelTelefono" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelDireccion" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelCargo" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelCiudad" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelCedula" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="botonRegresar" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="titulo" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="botonRegistrar" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="comboboxCargo" max="32767" attributes="0"/>
-                                      <Component id="fieldTelefono" max="32767" attributes="0"/>
-                                      <Component id="fieldDireccion" max="32767" attributes="0"/>
-                                      <Component id="fieldCiudad" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                      <Component id="comboboxSede" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="fieldCedula" alignment="1" min="-2" pref="127" max="-2" attributes="0"/>
+                                  <Component id="labelUser" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelPass" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelPass2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                      <Component id="labelCedula" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelNombre" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="labelDireccion" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelTelefono" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCiudad" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCargo" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelSede" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="fieldPass2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="fieldPass" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="fieldUser" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="fieldNombre" max="32767" attributes="0"/>
+                                  <Component id="fieldCedula" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="fieldTelefono" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="fieldDireccion" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="fieldCiudad" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="comboboxCargo" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="comboboxSede" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="115" max="32767" attributes="0"/>
+              <EmptySpace pref="105" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -84,25 +87,24 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="titulo" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="fieldUser" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="fieldPass" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="fieldPass2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="fieldNombre" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="labelUser" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="labelPass" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="labelPass2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="labelNombre" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="fieldUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelUser" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="fieldPass" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelPass" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="fieldPass2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelPass2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="fieldNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelNombre" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -130,9 +132,9 @@
                   <Component id="labelCargo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="comboboxSede" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelSede" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="comboboxSede" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelSede" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
