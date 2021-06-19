@@ -14,8 +14,10 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author usuario
+ * Este JFrame se utiliza para mostrar los datos de los empleados y las sedes,
+ * asi como permite crear, modificar y eliminar un empleado o sede
+ * @author Juan Diego Garcia, Miguel Angel Rincon, Eduardo Jose Daza
+ * @version 31/05/2021
  */
 public class MenuUsuario extends javax.swing.JFrame {
 
